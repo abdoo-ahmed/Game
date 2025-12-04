@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@theme {
+  --font-nerko: "Nerko One", "cursive";
+  --font-Comfortaa:"Comfortaa" , "cursive" ;
+}
+
+
+
+
+.active {
+  color: #0099CC;
+}
+
+body {
+    background-color: #272B30;
+}
