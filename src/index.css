@@ -4,7 +4,10 @@
   --font-Comfortaa:"Comfortaa" , "cursive" ;
 }
 
-
+.cards-container:has(.BlockOfCart:hover) .BlockOfCart:not(:hover) {
+    filter: blur(2px);
+    opacity: 0.9;
+}
 
 
 .active {
