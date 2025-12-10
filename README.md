@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# 🎮 Game Explorer --- React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a fully modular React + TypeScript application that
+displays free-to-play games fetched from the **Free-To-Play Games
+Database API**.\
+Each game category (MMORPG, Permadeath, Pixel, Sailing, Shooter,
+Superhero) is displayed on a separate page, and clicking any game card
+opens a full details page.
 
-Currently, two official plugins are available:
+The project uses a clean, scalable folder structure separating
+components, features, hooks, services, utils, routes, and layout.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+-   **React**
+-   **TypeScript**
+-   **Vite**
+-   **Axios**
+-   **React Query**
+-   **Redux Toolkit**
+-   **TailwindCSS**
+-   **React Router**
+-   **ESLint**
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 📌 API Used
 
-## Expanding the ESLint configuration
+Base URL:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    https://free-to-play-games-database.p.rapidapi.com
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Endpoints: - /games?category=MMORPG - /games?category=permadeath -
+/games?category=pixel - /games?category=sailing -
+/games?category=shooter - /games?category=superhero - /game?id=###
+(details)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+    src/
+    │
+    ├── Components/
+    │   ├── Layout/
+    │   │   └── Layout.tsx
+    │   └── Navbar/
+    │       └── Navbar.tsx
+    │
+    ├── Features/
+    │   └── Components/
+    │       ├── MMORPG.tsx
+    │       ├── PERMADEATH.tsx
+    │       ├── PIXEL.tsx
+    │       ├── SAILING.tsx
+    │       ├── SHOOTER.tsx
+    │       └── SUPERHERO.tsx
+    │
+    ├── Hooks/
+    │   ├── usemmorpg.ts
+    │   ├── usepermadeath.ts
+    │   ├── usepixel.ts
+    │   ├── usesailing.ts
+    │   ├── useshooter.ts
+    │   └── usesuperhero.ts
+    │
+    ├── Services/
+    │   ├── mmorpg.ts
+    │   ├── permadeath.ts
+    │   ├── pixel.ts
+    │   ├── sailing.ts
+    │   ├── shooter.ts
+    │   └── superhero.ts
+    │
+    ├── Utils/
+    │   ├── api.ts
+    │   └── utils.ts
+    │
+    ├── LoadingScreen/
+    │   └── LoadingScreen.tsx
+    │
+    ├── Routes/
+    │   └── Route.tsx
+    │
+    ├── assets/
+    │   └── Images/
+    │       └── react.svg
+    │
+    ├── App.tsx
+    ├── main.tsx
+    ├── index.css
+    └── App.css
+
+## 📡 API Layer Example
+
+``` ts
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: "https://free-to-play-games-database.p.rapidapi.com",
+  headers: {
+    "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
+    "x-rapidapi-key": import.meta.env.VITE_API_KEY,
   },
-])
+});
+
+export default api;
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔄 React Query Example
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+``` ts
+export const usemmorpg = () => {
+  return useQuery({
+    queryKey: ["mmorpg"],
+    queryFn: async () => {
+      const { data } = await getMMORPGGames();
+      return data;
     },
-  },
-])
+  });
+};
 ```
+
+## 🧭 Routing Example
+
+``` tsx
+<Routes>
+  <Route path="/" element={<Layout />}>
+    <Route path="mmorpg" element={<MMORPG />} />
+    <Route path="permadeath" element={<PERMADEATH />} />
+    <Route path="pixel" element={<PIXEL />} />
+    <Route path="sailing" element={<SAILING />} />
+    <Route path="shooter" element={<SHOOTER />} />
+    <Route path="superhero" element={<SUPERHERO />} />
+    <Route path="details/:id" element={<GameDetails />} />
+  </Route>
+</Routes>
+```
+
