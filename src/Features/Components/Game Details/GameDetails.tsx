@@ -26,7 +26,7 @@ const GameDetails = () => {
   return (
     <React.Fragment>
       <div className=" w-full font-comic">
-        <div className="bg-[#27282B] h-screen text-white p-6 md:p-14">
+        <div className="bg-[#27282B] min-h-screen text-white p-6 md:p-14">
           <button onClick={handleClose} className="absolute top-10 right-16 text-gray-400 hover:text-white text-2xl">
             ✕
           </button>
@@ -72,7 +72,7 @@ const GameDetails = () => {
                 {data?.data.description}
               </p>
 
-              <button onClick={handleShowGame} className="mt-4 px-6 py-2 border-2 cursor-pointer border-yellow-400 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-500">
+              <button onClick={handleShowGame} className="mt-4 px-6 py-2 border-2 cursor-pointer border-yellow-400 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-white transition-all duration-500">
                 Show Game
               </button>
             </div>
