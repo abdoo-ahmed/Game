@@ -1,10 +1,16 @@
 import { type Key } from "react";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { usepermadeath } from "../../Hooks/usepermadeath";
+import { useNavigate } from "react-router";
 
 const PERMADEATH = () => {
   const { data, error, isLoading } = usepermadeath();
-
+  const navigate = useNavigate();
+  function handleClick(id: number) {
+    localStorage.setItem("id" , `${id}`);
+    navigate("/gameDetails");
+  }
+  
   if (isLoading) return <LoadingScreen />;
 
   if (error)
@@ -22,6 +28,7 @@ const PERMADEATH = () => {
                 thumbnail: string;
                 short_description: string;
                 platform: string;
+                id : number;
               },
               index: Key | null | undefined
             ) => {
@@ -30,7 +37,7 @@ const PERMADEATH = () => {
                   key={index}
                   className="border border-[#202328] cursor-pointer p-4 rounded-xl shadow group hover:scale-105 transition-transform duration-500 h-full flex flex-col"
                 >
-                  <div className="text-white font-Comfortaa brightness-[0.6] group-hover:brightness-100 transition-all duration-700 flex flex-col h-full">
+                  <div onClick={() => handleClick(game.id)} className="text-white font-Comfortaa brightness-[0.6] group-hover:brightness-100 transition-all duration-700 flex flex-col h-full">
                     <img
                       src={game.thumbnail}
                       alt={game.title}
