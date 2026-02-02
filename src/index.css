@@ -2,14 +2,13 @@
 @theme {
   --font-nerko: "Nerko One", "cursive";
   --font-Comfortaa:"Comfortaa" , "cursive" ;
+  --font-comic: "Comic Sans MS", "Comic Sans", "cursive";
 }
 
 .cards-container:has(.BlockOfCart:hover) .BlockOfCart:not(:hover) {
     filter: blur(2px);
     opacity: 0.9;
 }
-
-
 .active {
   color: #0099CC;
 }

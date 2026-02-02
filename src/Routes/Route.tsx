@@ -6,6 +6,7 @@ import SAILING from "../Features/Components/SAILING/SAILING";
 import PERMADEATH from "../Features/Components/PERMADEATH/PERMADEATH";
 import SUPERHERO from "../Features/Components/SUPERHERO/SUPERHERO";
 import PIXEL from "../Features/Components/PIXEL/PIXEL";
+import GameDetails from "../Features/Components/Game Details/GameDetails";
 
 export const router = createBrowserRouter([
   {
@@ -21,4 +22,5 @@ export const router = createBrowserRouter([
       { path: "/PIXEL", element: <PIXEL /> },
     ],
   },
+  { path: "/gameDetails", element: <GameDetails /> },
 ]);
