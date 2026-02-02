@@ -5,6 +5,7 @@ const SAILING_API = `${API_BASE_URL}/api/games?category=sailing`;
 const PERMADEATH_API = `${API_BASE_URL}/api/games?category=permadeath`;
 const SUPERHERO_API = `${API_BASE_URL}/api/games?category=superhero`;
 const PIXEL_API = `${API_BASE_URL}/api/games?category=pixel`;
+const GAME_DETAILS_API = `${API_BASE_URL}/api/game`;
 
 export {
   MMORPG_API,
@@ -13,4 +14,5 @@ export {
   PERMADEATH_API,
   SUPERHERO_API,
   PIXEL_API,
+  GAME_DETAILS_API,
 };
