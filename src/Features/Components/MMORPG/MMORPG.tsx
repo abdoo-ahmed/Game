@@ -1,9 +1,15 @@
 import { type Key } from "react";
 import { usemmorpg } from "../../Hooks/usemmorpg";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import { useNavigate } from "react-router-dom";
 
 const MMORPG = () => {
   const { data, error, isLoading } = usemmorpg();
+  const navigate = useNavigate();
+  function handleClick(id: number) {
+    localStorage.setItem("id" , `${id}`);
+    navigate("/gameDetails");
+  }
 
   if (isLoading) return <LoadingScreen />;
 
@@ -22,6 +28,7 @@ const MMORPG = () => {
                 thumbnail: string;
                 short_description: string;
                 platform: string;
+                id : number;
               },
               index: Key | null | undefined
             ) => {
@@ -30,13 +37,13 @@ const MMORPG = () => {
                   key={index}
                   className="border BlockOfCart border-[#202328] cursor-pointer p-4 rounded-xl shadow group hover:scale-105 transition-transform duration-500 h-full flex flex-col"
                 >
-                  <div className="text-white font-Comfortaa brightness-[0.6] group-hover:brightness-100 transition-all duration-700 flex flex-col h-full">
+                  <div onClick={() => handleClick(game.id)} className="text-white font-Comfortaa brightness-[0.6] group-hover:brightness-100 transition-all duration-700 flex flex-col h-full">
                     <img
                       src={game.thumbnail}
                       alt={game.title}
                       className="rounded-md w-full"
                     />
-
+                    
                     <div className="flex justify-between items-center mt-3">
                       <h2 className="text-lg font-semibold">{game.title}</h2>
                       <span className="bg-blue-500 text-white text-sm px-2 py-1 rounded-md">
