@@ -17,7 +17,6 @@ components, features, hooks, services, utils, routes, and layout.
 -   **Vite**
 -   **Axios**
 -   **React Query**
--   **Redux Toolkit**
 -   **TailwindCSS**
 -   **React Router**
 -   **ESLint**
