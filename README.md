@@ -17,7 +17,6 @@ components, features, hooks, services, utils, routes, and layout.
 -   **Vite**
 -   **Axios**
 -   **React Query**
--   **Redux Toolkit**
 -   **TailwindCSS**
 -   **React Router**
 -   **ESLint**
@@ -120,16 +119,22 @@ export const usemmorpg = () => {
 ## 🧭 Routing Example
 
 ``` tsx
-<Routes>
-  <Route path="/" element={<Layout />}>
-    <Route path="mmorpg" element={<MMORPG />} />
-    <Route path="permadeath" element={<PERMADEATH />} />
-    <Route path="pixel" element={<PIXEL />} />
-    <Route path="sailing" element={<SAILING />} />
-    <Route path="shooter" element={<SHOOTER />} />
-    <Route path="superhero" element={<SUPERHERO />} />
-    <Route path="details/:id" element={<GameDetails />} />
-  </Route>
-</Routes>
+export const router = createHashRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "/MMORPG", element: <MMORPG /> },
+      { path: "/", element: <MMORPG /> },
+      { path: "/SHOOTER", element: <SHOOTER /> },
+      { path: "/SAILING", element: <SAILING /> },
+      { path: "/PERMADEATH", element: <PERMADEATH /> },
+      { path: "/SUPERHERO", element: <SUPERHERO /> },
+      { path: "/PIXEL", element: <PIXEL /> },
+    ],
+  },
+  { path: "/gameDetails", element: <GameDetails /> },
+]);
+
 ```
 
