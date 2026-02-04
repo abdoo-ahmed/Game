@@ -1,5 +1,5 @@
 import Layout from "../Components/Layout/Layout";
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import MMORPG from "../Features/Components/MMORPG/MMORPG";
 import SHOOTER from "../Features/Components/SHOOTER/SHOOTER";
 import SAILING from "../Features/Components/SAILING/SAILING";
@@ -8,7 +8,7 @@ import SUPERHERO from "../Features/Components/SUPERHERO/SUPERHERO";
 import PIXEL from "../Features/Components/PIXEL/PIXEL";
 import GameDetails from "../Features/Components/Game Details/GameDetails";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
