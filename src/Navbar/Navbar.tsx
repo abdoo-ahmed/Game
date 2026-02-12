@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import Logo from '../assets/Images/logo-sm.png';
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -63,7 +63,7 @@ const Navbar = () => {
         <div className="ml-4 flex items-center gap-1">
           <img
             className="w-10"
-            src="../../../../src/assets/Images/logo-sm.png"
+            src={Logo}
             alt="Logo"
           />
           <h5 className="font-medium font-nerko text-[20px] w-[178px] text-white">

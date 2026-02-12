@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../../Navbar/Navbar";
-
+import Wraper from '../../assets/Images/wraper.png';
 const Layout = () => {
   return (
     <>
@@ -8,7 +8,7 @@ const Layout = () => {
         <div className="relative flex justify-center items-center">
           <img
             className="w-full h-[210px]"
-            src="../../../src/assets/Images/wraper.png"
+            src={Wraper}
             alt="wraper"
           />
           <Navbar />

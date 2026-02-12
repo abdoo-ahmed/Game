@@ -39,7 +39,7 @@ const GameDetails = () => {
             <div className="w-full">
               <img
                 src={`${data?.data.thumbnail}`}
-                alt="Lost Ark"
+                alt={data?.data.title}
                 className="w-full object-cover"
               />
             </div>
