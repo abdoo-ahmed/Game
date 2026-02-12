@@ -2,6 +2,7 @@ import { type Key } from "react";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { usepermadeath } from "../../Hooks/usepermadeath";
 import { useNavigate } from "react-router";
+import type { Game } from "../../Utils/utils";
 
 const PERMADEATH = () => {
   const { data, error, isLoading } = usepermadeath();
@@ -22,14 +23,7 @@ const PERMADEATH = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 cards-container">
           {data?.data.map(
             (
-              game: {
-                title: string;
-                genre: string;
-                thumbnail: string;
-                short_description: string;
-                platform: string;
-                id : number;
-              },
+              game: Game,
               index: Key | null | undefined
             ) => {
               return (
@@ -41,6 +35,7 @@ const PERMADEATH = () => {
                     <img
                       src={game.thumbnail}
                       alt={game.title}
+                      loading="lazy"
                       className="rounded-md w-full"
                     />
 

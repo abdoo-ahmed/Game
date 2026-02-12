@@ -2,6 +2,7 @@ import { type Key } from "react";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { usepixel } from "../../Hooks/usepixel";
 import { useNavigate } from "react-router-dom";
+import type { Game } from "../../Utils/utils";
 
 const PIXEL = () => {
   const { data, error, isLoading } = usepixel();
@@ -23,14 +24,7 @@ const PIXEL = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 cards-container">
           {data?.data.map(
             (
-              game: {
-                title: string;
-                genre: string;
-                thumbnail: string;
-                short_description: string;
-                platform: string;
-                id : number;
-              },
+              game: Game,
               index: Key | null | undefined
             ) => {
               return (
@@ -42,6 +36,7 @@ const PIXEL = () => {
                     <img
                       src={game.thumbnail}
                       alt={game.title}
+                      loading="lazy"
                       className="rounded-md w-full"
                     />
 

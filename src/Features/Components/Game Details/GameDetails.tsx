@@ -40,6 +40,7 @@ const GameDetails = () => {
               <img
                 src={`${data?.data.thumbnail}`}
                 alt={data?.data.title}
+                loading="lazy"
                 className="w-full object-cover"
               />
             </div>

@@ -3,6 +3,8 @@ import { RouterProvider } from 'react-router-dom'
 import './App.css'
 import { router } from './Routes/Route'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Suspense } from 'react'
+import LoadingScreen from './Features/Components/LoadingScreen/LoadingScreen'
 
 function App() {
 
@@ -10,8 +12,10 @@ function App() {
   
   return (
     <>
-       <QueryClientProvider client={queryClient}> 
-        <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <Suspense fallback={<LoadingScreen />}>
+          <RouterProvider router={router} />
+        </Suspense>
       </QueryClientProvider>
     </>
   )
