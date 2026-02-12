@@ -1,13 +1,13 @@
+import React from "react";
 import Layout from "../Components/Layout/Layout";
 import { createHashRouter } from "react-router-dom";
-import MMORPG from "../Features/Components/MMORPG/MMORPG";
-import SHOOTER from "../Features/Components/SHOOTER/SHOOTER";
-import SAILING from "../Features/Components/SAILING/SAILING";
-import PERMADEATH from "../Features/Components/PERMADEATH/PERMADEATH";
-import SUPERHERO from "../Features/Components/SUPERHERO/SUPERHERO";
-import PIXEL from "../Features/Components/PIXEL/PIXEL";
-import GameDetails from "../Features/Components/Game Details/GameDetails";
-
+const MMORPG = React.lazy(() => import("../Features/Components/MMORPG/MMORPG"));
+const SHOOTER = React.lazy(() => import("../Features/Components/SHOOTER/SHOOTER"));
+const SAILING = React.lazy(() => import("../Features/Components/SAILING/SAILING"));
+const PERMADEATH = React.lazy(() => import("../Features/Components/PERMADEATH/PERMADEATH"));
+const SUPERHERO = React.lazy(() => import("../Features/Components/SUPERHERO/SUPERHERO"));
+const PIXEL = React.lazy(() => import("../Features/Components/PIXEL/PIXEL"));
+const GameDetails = React.lazy(() => import("../Features/Components/Game Details/GameDetails"));
 export const router = createHashRouter([
   {
     path: "/",
